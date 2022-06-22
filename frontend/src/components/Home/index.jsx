@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import Hearder from "../layouts/Header/index";
+import Footer from "../layouts/Footer/index";
 
 const ContainerHome = styled.div`
   width: 100%;
@@ -8,8 +10,15 @@ const ContainerHome = styled.div`
   flex-direction: column;
 `;
 
-function Home() {
-  return <ContainerHome>This is HOme</ContainerHome>;
+function Index() {
+  return (
+    <>
+      <ContainerHome>
+        <Hearder />
+        <Footer />
+      </ContainerHome>
+    </>
+  );
 }
 
-export default Home;
+export default Index;
