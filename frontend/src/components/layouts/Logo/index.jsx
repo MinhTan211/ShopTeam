@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import {
   BGContentShopTeam,
   DiamondContainerBottom,
@@ -31,26 +31,40 @@ const LogoContainer = styled.div`
     transition: bottom 2s, opacity 2s;
   }
   &:hover ${LOGOBGContainer} {
-    border-top-color: #fff;
-    border-right-color: #fff;
     transition-delay: 0s;
     transform: rotate(90deg);
+    @media only screen and (min-width: 900px) {
+      border-top-color: #fff;
+      border-right-color: #fff;
+    }
+    @media only screen and (max-width: 900px) {
+      border-top-color: #0cc9c9;
+      border-right-color: #0cc9c9;
+    }
   }
   &:hover ${BGContentShopTeam} {
     background: none;
     transition-delay: 1s;
   }
   &:hover ${ShopTeamContentContainer} {
-    background: rgb(12, 189, 189);
-    background: linear-gradient(
-      90deg,
-      rgba(12, 189, 189, 1) 0%,
-      rgba(11, 149, 149, 1) 50%,
-      rgba(6, 82, 82, 1) 100%
-    );
-    font-weight: bold;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    @media only screen and (min-width: 900px) {
+      background: rgb(12, 189, 189);
+      background: linear-gradient(
+        90deg,
+        rgba(12, 189, 189, 1) 0%,
+        rgba(11, 149, 149, 1) 50%,
+        rgba(6, 82, 82, 1) 100%
+      );
+      font-weight: bold;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    @media only screen and (max-width: 900px) {
+      background: #fff;
+      font-weight: bold;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
   }
 `;
 
