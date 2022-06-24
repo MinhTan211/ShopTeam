@@ -1,17 +1,9 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import {
-  FaBars,
-  FaSearch,
-  FaShoppingBasket,
-  FaUserCircle,
-} from "react-icons/fa";
-import Logo from "../Logo/index";
-import { useState } from "react";
 
 const color = "#0cc9c9";
 
-const NavContainer = styled.div`
+export const NavContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -31,7 +23,7 @@ const NavContainer = styled.div`
   }
 `;
 
-const LOGOContainer = styled.div`
+export const LOGOContainer = styled.div`
   width: 125px;
   height: 100%;
   @media only screen and (max-width: 900px) {
@@ -39,7 +31,7 @@ const LOGOContainer = styled.div`
   }
 `;
 
-const MenuBarContainer = styled.div`
+export const MenuBarContainer = styled.div`
   width: 90%;
   margin-left: 5%;
   @media only screen and (max-width: 900px) {
@@ -51,7 +43,7 @@ const MenuBarContainer = styled.div`
   }
 `;
 
-const ULElement = styled.ul`
+export const ULElement = styled.ul`
   margin: 0;
   padding: 0;
   display: flex;
@@ -61,7 +53,7 @@ const ULElement = styled.ul`
   }
 `;
 
-const LIElement = styled.li`
+export const LIElement = styled.li`
   text-decoration: none;
   font-size: 16px;
   flex-grow: 1;
@@ -70,7 +62,7 @@ const LIElement = styled.li`
   }
 `;
 
-const LinkContainer = styled(Link)`
+export const LinkContainer = styled(Link)`
   text-decoration: none;
   font-weight: bold;
   font-family: "Fira Sans", sans-serif;
@@ -103,13 +95,13 @@ const LinkContainer = styled(Link)`
   }
 `;
 
-const FaBarsConatiner = styled.div`
+export const FaBarsConatiner = styled.div`
   @media only screen and (min-width: 900px) {
     display: none;
   }
   @media only screen and (max-width: 900px) {
     display: inline-block;
-    color: ${color};
+    color: #fff;
     margin-right: ${(props) => (props.fabar ? "0px" : "50px")};
     &::after {
       content: "";
@@ -128,7 +120,7 @@ const FaBarsConatiner = styled.div`
   }
 `;
 
-const MenuHidenContainer = styled.div`
+export const MenuHidenContainer = styled.div`
   @media only screen and (min-width: 900px) {
     display: none;
   }
@@ -147,30 +139,31 @@ const MenuHidenContainer = styled.div`
   }
 `;
 
-const ContentMenuHiden = styled.div`
+export const ContentMenuHiden = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-const LOGOMenuHidenContainer = styled.div`
+export const LOGOMenuHidenContainer = styled.div`
   margin-top: 30px;
   display: flex;
   justify-content: center;
 `;
 
-const TitlePage = styled.span`
+export const TitlePage = styled.span`
   font-size: 30px;
   color: #065252;
   margin-top: 45px;
+  margin-left: 15px;
 `;
 
-const ULMenuHidenContainer = styled.ul`
+export const ULMenuHidenContainer = styled.ul`
   margin: 0;
   margin-top: 5px;
   list-style-type: circle;
 `;
 
-const OpacityContainer = styled.div`
+export const OpacityContainer = styled.div`
   @media only screen and (min-width: 900px) {
     display: none;
   }
@@ -187,137 +180,11 @@ const OpacityContainer = styled.div`
 
 export const HeaderContainer = styled.header`
   width: 100%;
-  height: 100%;
+  position: fixed;
   padding: 17px 0px;
   box-shadow: 0 2px 5px 0 rgba(175, 175, 175, 0.3);
+  background-color: #fff;
+  @media only screen and (max-width: 900px) {
+    background-color: ${color};
+  }
 `;
-
-export const Menubar = function () {
-  const [checkedMenu, setCheckedMenu] = useState(false);
-
-  function handlerOnclickForMenu() {
-    setCheckedMenu(!checkedMenu);
-  }
-
-  function handlerStyleForMenu() {
-    if (checkedMenu) {
-      return {
-        opacity: 1,
-        transform: "translateX(0%)",
-      };
-    } else {
-      return {
-        opacity: 0,
-        transform: "translateX(-100%)",
-      };
-    }
-  }
-
-  function handlerStyleForOpacityContainer() {
-    if (checkedMenu) {
-      return {
-        opacity: 0.6,
-        display: "block",
-      };
-    } else {
-      return {
-        opacity: 0,
-        display: "none",
-      };
-    }
-  }
-
-  return (
-    <>
-      <NavContainer>
-        <LOGOContainer>
-          <Logo />
-        </LOGOContainer>
-        <MenuBarContainer>
-          <ULElement>
-            <LIElement>
-              <LinkContainer primary="true" to="admin/user">
-                Home
-              </LinkContainer>
-            </LIElement>
-            <LIElement>
-              <LinkContainer to="">Shop</LinkContainer>
-            </LIElement>
-            <LIElement>
-              <LinkContainer to="">Blog</LinkContainer>
-            </LIElement>
-            <LIElement>
-              <LinkContainer to="">Contact</LinkContainer>
-            </LIElement>
-            <LIElement>
-              <LinkContainer to="">Seller Channel</LinkContainer>
-            </LIElement>
-            <LIElement>
-              <LinkContainer to="">
-                <FaUserCircle />
-              </LinkContainer>
-            </LIElement>
-            <LIElement>
-              <LinkContainer to="">
-                <FaShoppingBasket />
-              </LinkContainer>
-            </LIElement>
-            <LIElement>
-              <LinkContainer to="">
-                <FaSearch />
-              </LinkContainer>
-            </LIElement>
-          </ULElement>
-          <FaBarsConatiner>
-            <FaUserCircle />
-          </FaBarsConatiner>
-          <FaBarsConatiner>
-            <FaShoppingBasket />
-          </FaBarsConatiner>
-          <FaBarsConatiner fabar onClick={() => handlerOnclickForMenu()}>
-            <FaBars />
-          </FaBarsConatiner>
-        </MenuBarContainer>
-      </NavContainer>
-      <OpacityContainer
-        style={handlerStyleForOpacityContainer()}
-        onClick={() => handlerOnclickForMenu()}
-      />
-      <MenuHidenContainer style={handlerStyleForMenu()}>
-        <ContentMenuHiden>
-          <LOGOMenuHidenContainer>
-            <Logo />
-          </LOGOMenuHidenContainer>
-          <TitlePage>PAGE</TitlePage>
-          <ULMenuHidenContainer>
-            <LIElement>
-              <LinkContainer primary="true" to="">
-                Home
-              </LinkContainer>
-            </LIElement>
-            <LIElement>
-              <LinkContainer primary="true" to="">
-                Shop
-              </LinkContainer>
-            </LIElement>
-            <LIElement>
-              <LinkContainer primary="true" to="">
-                Blog
-              </LinkContainer>
-            </LIElement>
-            <LIElement>
-              <LinkContainer primary="true" to="">
-                Contact
-              </LinkContainer>
-            </LIElement>
-            <LIElement>
-              <LinkContainer primary="true" to="">
-                Seller Channel
-              </LinkContainer>
-            </LIElement>
-          </ULMenuHidenContainer>
-        </ContentMenuHiden>
-      </MenuHidenContainer>
-    </>
-  );
-};
